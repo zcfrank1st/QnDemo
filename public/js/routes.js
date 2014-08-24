@@ -18,6 +18,10 @@ angular.module('myRoutes', ['ngRoute', 'myControllers'])
                     templateUrl: 'views/music.html',
                     controller: 'musicCtrl'
                 })
+                .when('/picture', {
+                    templateUrl: 'views/picture.html',
+                    controller: 'pictureCtrl'
+                })
                 .when('/all', {
                     templateUrl: 'views/all.html',
                     controller: 'allCtrl'

@@ -14,29 +14,42 @@ angular
             $scope.isDefault = false;
             $scope.isPicture = true;
             $scope.isAudio = false;
+            $scope.isSum = false;
         } else if (currentPath.indexOf('/music') >=0){
             $scope.isDefault = false;
             $scope.isPicture = false;
             $scope.isAudio = true;
-        } else {
-            $scope.isDefault = true;
+            $scope.isSum = false;
+        } else if (currentPath.indexOf('/all') >=0 || currentPath.indexOf('/share') >=0 || currentPath.indexOf('/upload') >=0){
+            $scope.isDefault = false;
             $scope.isPicture = false;
             $scope.isAudio = false;
+            $scope.isSum = true;
         }
 
+        $scope.sum = function () {
+            $scope.isDefault = false;
+            $scope.isPicture = false;
+            $scope.isAudio = false;
+            $scope.isSum = true;
+        };
+
         $scope.film = function () {
+            $scope.isSum = false;
             $scope.isDefault = true;
             $scope.isPicture = false;
             $scope.isAudio = false;
         };
 
         $scope.audio = function () {
+            $scope.isSum = false;
             $scope.isDefault = false;
             $scope.isPicture = false;
             $scope.isAudio = true;
         };
 
         $scope.picture = function () {
+            $scope.isSum = false;
             $scope.isDefault = false;
             $scope.isPicture = true;
             $scope.isAudio = false;
@@ -51,7 +64,7 @@ angular
                 content.type = data.items[i].mimeType;
                 content.date = (new Date(parseInt((data.items[i].putTime + "").substr(0, 13)))).toLocaleString();
                 content.name = data.items[i].key;
-                content.url = Utils.openUrl + data.items[i].key;
+                content.url = Utils.openUrl + data.items[i].key + '?download';
                 if (content.name.indexOf('.mp4') >= 0) {
                     content.isMP4 = true;
                 }
@@ -188,5 +201,42 @@ angular
                 }, 1000);
             });
         };
+    })
+    .controller('allCtrl', function ($scope, $http, $location, listService, deleteService, Utils, $timeout, $route) {
+        // hardcode type
+        listService.get(function (data) {
+            var contents = [];
+            for (var i in data.items) {
+                var content = {};
+                content.type = data.items[i].mimeType;
+                content.date = (new Date(parseInt((data.items[i].putTime + "").substr(0, 13)))).toLocaleString();
+                content.name = data.items[i].key;
+                content.url = Utils.openUrl + data.items[i].key  + '?download';
+                contents.push(content);
+            }
+            $scope.contents = contents;
+        });
+
+        $scope.deleteFile = function (index, filename) {
+            $('#fdel' + index).notify('文件正在删除中...',
+                {
+                    position: 'right',
+                    className: 'info'
+                }
+            );
+
+            deleteService.save({filename: filename}, function () {
+                $timeout(function () {
+                    $route.reload();
+                }, 1000);
+            });
+        };
+    })
+    .controller('uploadCtrl', function () {
+
+    })
+    .controller('shareCtrl', function () {
+
     });
+
 
