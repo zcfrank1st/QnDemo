@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <div id="pad-wrapper">
+        <div class="row-fluid chart">
+            <a class="btn-flat info" ng-href="#"><i class="icon-reply"></i>返回</a>
+            <h4>
+                {{videoName}}
+            </h4>
+            <br>
+            <div class="span12">
+                <video style="height: 540px; width: 900px; position:absolute; top:0; bottom:0; left:0; right:0; margin:auto;" id="ourvideo" controls>
+                    <source ng-src="{{targetUrl}}">
+                </video>
+                <div id="footnote"></div>
+            </div>
+        </div>
+    </div>
+</div>

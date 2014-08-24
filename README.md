@@ -1,0 +1,1 @@
+http://qnmedia.qiniudn.com/{{}}

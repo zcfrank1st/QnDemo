@@ -1,0 +1,74 @@
+<div class="container-fluid">
+    <div id="pad-wrapper">
+        <!-- orders table -->
+        <div class="table-wrapper orders-table section">
+            <div class="row-fluid head">
+                <div class="span12">
+                    <h4>我的视频</h4>
+                </div>
+            </div>
+
+            <div class="row-fluid filter-block">
+                <div class="pull-right">
+                    <input type="text" class="search order-search" placeholder="搜索视频..." ng-model="q"/>
+                </div>
+            </div>
+
+            <div class="row-fluid">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th class="span2">
+                            编号
+                        </th>
+                        <th class="span3">
+                            <span class="line"></span>
+                            创建时间
+                        </th>
+                        <th class="span2">
+                            <span class="line"></span>
+                            文件类型
+                        </th>
+                        <th class="span3">
+                            <span class="line"></span>
+                            视频名称
+                        </th>
+                        <th class="span3">
+                            <span class="line"></span>
+                            操作
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- row -->
+                    <tr ng-class="{first: $first}" ng-repeat="content in contents | filter:q | filter: 'mp4'">
+                        <td>
+                            {{$index + 1}}
+                        </td>
+                        <td>
+                            {{content.date}}
+                        </td>
+                        <td>
+                            <span class='label label-success' ng-if="content.isMP4">{{content.type}}</span>
+                            <span class='label label-info' ng-if="content.isRMVB">{{content.type}}</span>
+                        </td>
+                        <td>
+                            {{content.name}}
+                        </td>
+                        <td>
+                            <div class="btn-group pull-left" id="vdel{{$index}}">
+                                <a style="text-decoration: none" class="btn glow left large"
+                                   ng-click="play(content.name)"><i class="icon icon-facetime-video"></i></a>
+                                <a style="text-decoration: none" class="btn glow middle large"
+                                   ng-href="{{content.url}}"><i class="icon icon-cloud-download"></i></a>
+                                <a style="text-decoration: none" class="btn glow right large"
+                                   ng-click="deleteVideo($index, content.name)"><i class="icon icon-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
