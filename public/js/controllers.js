@@ -6,7 +6,7 @@ angular
     .module('myControllers', ['valuesFactory'])
     .controller('navbarCtrl', function ($scope) {
         // TODO 根据权限可以替换，demo写死
-        $scope.username = 'zcfrank1st';
+        $scope.username = 'qnmedia';
     })
     .controller('sidebarCtrl', function ($scope, $location) {
         var currentPath = $location.path();
@@ -25,6 +25,11 @@ angular
             $scope.isPicture = false;
             $scope.isAudio = false;
             $scope.isSum = true;
+        } else {
+            $scope.isDefault = true;
+            $scope.isPicture = false;
+            $scope.isAudio = false;
+            $scope.isSum = false;
         }
 
         $scope.sum = function () {
@@ -232,7 +237,7 @@ angular
             });
         };
     })
-    .controller('uploadCtrl', function () {
+    .controller('uploadCtrl', function ($scope) {
 
     })
     .controller('shareCtrl', function () {

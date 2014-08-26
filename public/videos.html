@@ -43,7 +43,7 @@
         </button>
 
         <a class="brand" href="">
-            <img src="../lib/img/qn.png" style="height:25px;"/>
+            <img src="lib/img/qn.png" style="height:25px;"/>
         </a>
 
         <ul class="nav pull-right">
@@ -54,7 +54,8 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="">退出</a>
+                        <a href="" data-toggle="modal" data-target="#myModal">切换公共bucket</a>
+                        <a href="">清除bucket信息</a>
                     </li>
                 </ul>
             </li>
@@ -107,9 +108,12 @@
                 <i class="icon-chevron-down"></i>
             </a>
             <ul class="submenu">
-                <li><a href="#/all" ng-click="sum()">所有文件</a></li>
-                <li><a href="#/upload" ng-click="sum()">上传文件</a></li>
-                <li><a href="#/share" ng-click="sum()">Share</a></li>
+                <li><a href="#/all" ng-click="sum()">所有文件</a>
+                </li>
+                <li><a href="#/upload" ng-click="sum()">上传文件</a>
+                </li>
+                <li><a href="#/share" ng-click="sum()">Share内测</a>
+                </li>
             </ul>
         </li>
     </ul>
@@ -123,6 +127,38 @@
 </div>
 <!-- end main container -->
 
+<div class="modal fade hide" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x
+        </button>
+        <h4 class="modal-title" id="myModalLabel">切换公共Bucket</h4>
+    </div>
+    <div class="modal-body">
+        <form role="form">
+            <div class="form-group">
+                <label>Public Bucket</label>
+                <input type="text" class="form-control input-block-level" ng-model="bucketname" placeholder="Public Bucket">
+            </div>
+            <div class="form-group">
+                <label>Secret Key</label>
+                <input type="password" class="form-control input-block-level" ng-model="sk" placeholder="Secret Key">
+
+                <p class="text-success" ng-show="sk">当前Secret Key: {{sk}}</p>
+            </div>
+            <div class="form-group">
+                <label>Access Key</label>
+                <input type="password" class="form-control input-block-level" ng-model="ak" placeholder="Access Key">
+
+                <p class="text-success" ng-show="ak">当前Access Key: {{ak}}</p>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button class="btn btn-primary" ng-click='setOptions()'>确定</button>
+    </div>
+</div>
 <!-- scripts -->
 <script src="http://libs.useso.com/js/jquery/1.11.1/jquery.min.js"></script>
 <script src="lib/js/bootstrap.min.js"></script>

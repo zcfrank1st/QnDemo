@@ -4,7 +4,10 @@
         <div class="table-wrapper orders-table section">
             <div class="row-fluid head">
                 <div class="span12">
-                    <button class="btn-flat">上传</button>
+                    <form method="post" action="/uploadfile" enctype="multipart/form-data" >
+                        <input type="file" name="file" id="file"/>
+                        <input type="submit" class="btn-flat" value="上传文件"/>
+                    </form>
                 </div>
             </div>
         </div>
