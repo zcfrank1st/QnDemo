@@ -4,9 +4,13 @@
 'use strict';
 angular
     .module('myControllers', ['valuesFactory'])
-    .controller('navbarCtrl', function ($scope) {
+    .controller('navbarCtrl', function ($scope,$window) {
         // TODO 根据权限可以替换，demo写死
         $scope.username = 'qnmedia';
+
+        $scope.clearBucketInfo = function () {
+            $window.localStorage.clear();
+        };
     })
     .controller('sidebarCtrl', function ($scope, $location) {
         var currentPath = $location.path();
@@ -242,6 +246,13 @@ angular
     })
     .controller('shareCtrl', function () {
 
+    })
+    .controller('modalCtrl', function ($scope, $window) {
+        $scope.setOptions = function () {
+            $window.localStorage['bucketname'] = $scope.bucketname;
+            $window.localStorage['ak'] = $scope.ak;
+            $window.localStorage['sk'] = $scope.sk;
+        };
     });
 
 

@@ -55,7 +55,7 @@
                 <ul class="dropdown-menu">
                     <li>
                         <a href="" data-toggle="modal" data-target="#myModal">切换公共bucket</a>
-                        <a href="">清除bucket信息</a>
+                        <a href="" ng-click="clearBucketInfo()">清除bucket信息</a>
                     </li>
                 </ul>
             </li>
@@ -127,7 +127,7 @@
 </div>
 <!-- end main container -->
 
-<div class="modal fade hide" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade hide" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="modalCtrl">
 
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">x
@@ -156,7 +156,7 @@
     </div>
     <div class="modal-footer">
         <button class="btn btn-default" data-dismiss="modal">关闭</button>
-        <button class="btn btn-primary" ng-click='setOptions()'>确定</button>
+        <button class="btn btn-primary" data-dismiss="modal" ng-click='setOptions()'>确定</button>
     </div>
 </div>
 <!-- scripts -->
