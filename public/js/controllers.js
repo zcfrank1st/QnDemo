@@ -10,6 +10,10 @@ angular
 
         $scope.clearBucketInfo = function () {
             $window.localStorage.clear();
+            $.notify("公共Bucket信息已清除！", {
+                className: "success",
+                autoHideDelay: 1000
+            });
         };
     })
     .controller('sidebarCtrl', function ($scope, $location) {
@@ -244,11 +248,13 @@ angular
     .controller('uploadCtrl', function ($scope) {
 
     })
-    .controller('modalCtrl', function ($scope, $window) {
+    .controller('modalCtrl', function ($scope, $window, $location) {
         $scope.setOptions = function () {
             $window.localStorage['bucketname'] = $scope.bucketname;
             $window.localStorage['ak'] = $scope.ak;
             $window.localStorage['sk'] = $scope.sk;
+
+            $location.path('/');
         };
     });
 
