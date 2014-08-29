@@ -30,10 +30,6 @@ angular.module('myRoutes', ['ngRoute', 'myControllers'])
                     templateUrl: 'views/upload.html',
                     controller: 'uploadCtrl'
                 })
-                .when('/share', {
-                    templateUrl: 'views/share.html',
-                    controller: 'shareCtrl'
-                })
                 .otherwise({
                     redirectTo: '/'
                 });

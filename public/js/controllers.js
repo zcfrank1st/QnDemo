@@ -244,9 +244,6 @@ angular
     .controller('uploadCtrl', function ($scope) {
 
     })
-    .controller('shareCtrl', function () {
-
-    })
     .controller('modalCtrl', function ($scope, $window) {
         $scope.setOptions = function () {
             $window.localStorage['bucketname'] = $scope.bucketname;
