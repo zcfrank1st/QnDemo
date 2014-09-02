@@ -245,7 +245,7 @@ angular
             });
         };
     })
-    .controller('uploadCtrl', function ($scope) {
+    .controller('uploadCtrl', function ($scope, $location) {
 
     })
     .controller('modalCtrl', function ($scope, $window, $location) {

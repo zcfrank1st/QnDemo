@@ -121,8 +121,7 @@ app.post('/uploadfile', function (req, res) {
         });
         // at end the response, run a function to do something with the response data
         response.on('end', function () {
-          console.log(responseBody);
-          res.end();
+          res.redirect(301, '/#/upload');
         });
       });
 
@@ -142,7 +141,6 @@ app.post('/uploadfile', function (req, res) {
         // mark the end of the one and only part
         fs.unlinkSync('tmp/' + myfilename);
         request.end(postBodyTail);
-
       });
 
     });
