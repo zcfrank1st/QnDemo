@@ -246,7 +246,14 @@ angular
         };
     })
     .controller('uploadCtrl', function ($scope, $location) {
-
+        if ($location.path().indexOf('upload/1') > 0){
+            $('#up').notify('文件上传成功！',
+                {
+                    position: 'right',
+                    className: 'success'
+                }
+            );
+        }
     })
     .controller('modalCtrl', function ($scope, $window, $location) {
         $scope.setOptions = function () {

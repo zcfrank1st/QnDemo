@@ -26,7 +26,7 @@ angular.module('myRoutes', ['ngRoute', 'myControllers'])
                     templateUrl: 'views/all.html',
                     controller: 'allCtrl'
                 })
-                .when('/upload', {
+                .when('/upload/:id', {
                     templateUrl: 'views/upload.html',
                     controller: 'uploadCtrl'
                 })

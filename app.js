@@ -121,7 +121,7 @@ app.post('/uploadfile', function (req, res) {
         });
         // at end the response, run a function to do something with the response data
         response.on('end', function () {
-          res.redirect(301, '/#/upload');
+          res.redirect(301, '/#/upload/1');
         });
       });
 
